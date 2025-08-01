@@ -54,7 +54,7 @@ const AppLayout: React.FC = () => {
           <Routes>
             {/* Nurse Routes */}
             <Route element={<ProtectedRoute allowedRoles={['nurse']} />}>
-              <Route path="nurse/dashboard" element={<NurseDashboardPage />} />
+              <Route path="dashboard" element={<NurseDashboardPage />} />
               <Route path="stocks" element={<StocksPage />} />
               <Route path="history" element={<HistoryPage />} />
               <Route path="reports" element={<ReportsPage />} />
@@ -67,7 +67,7 @@ const AppLayout: React.FC = () => {
 
             {/* Doctor Routes */}
             <Route element={<ProtectedRoute allowedRoles={['doctor']} />}>
-              <Route path="doctor/dashboard" element={<DoctorDashboardPage />} />
+              <Route path="dashboard" element={<DoctorDashboardPage />} />
               <Route path="chat" element={<ChatPage />} />
             </Route>
 
@@ -76,7 +76,7 @@ const AppLayout: React.FC = () => {
                 <Route path="appointment" element={<AppointmentPage />} />
             </Route>
             <Route element={<ProtectedRoute allowedRoles={['patient', 'nurse', 'doctor']} />}>
-              <Route path="patient/profile" element={<PatientProfilePage />} />
+              <Route path="profile" element={<PatientProfilePage />} />
             </Route>
 
             {/* Shared Routes */}
