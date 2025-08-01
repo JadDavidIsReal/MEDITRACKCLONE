@@ -15,9 +15,9 @@ import DoctorDashboardPage from '../pages/doctor/DoctorDashboardPage';
 import ChatPage from '../pages/doctor/ChatPage';
 // Patient Pages
 import AppointmentPage from '../pages/patient/AppointmentPage';
+import PatientProfilePage from '../pages/shared/PatientProfilePage';
 // Shared Pages
 import AboutPage from '../pages/AboutPage';
-import PatientProfilePage from '../pages/shared/PatientProfilePage';
 
 const AppLayout: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1024);
@@ -46,7 +46,7 @@ const AppLayout: React.FC = () => {
   return (
     <div className="flex h-screen bg-gray-50">
       <div className={`fixed lg:static h-full z-20 bg-gray-800 text-white transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-0'} lg:w-64`}>
-        <Sidebar role={userRole} />
+        {isSidebarOpen && <Sidebar role={userRole} />}
       </div>
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header toggleSidebar={toggleSidebar} />
@@ -54,7 +54,7 @@ const AppLayout: React.FC = () => {
           <Routes>
             {/* Nurse Routes */}
             <Route element={<ProtectedRoute allowedRoles={['nurse']} />}>
-              <Route path="nurse/dashboard" element={<NurseDashboardPage />} />
+              <Route path="dashboard" element={<NurseDashboardPage />} />
               <Route path="stocks" element={<StocksPage />} />
               <Route path="history" element={<HistoryPage />} />
               <Route path="reports" element={<ReportsPage />} />
@@ -67,7 +67,7 @@ const AppLayout: React.FC = () => {
 
             {/* Doctor Routes */}
             <Route element={<ProtectedRoute allowedRoles={['doctor']} />}>
-              <Route path="doctor/dashboard" element={<DoctorDashboardPage />} />
+              <Route path="dashboard" element={<DoctorDashboardPage />} />
               <Route path="chat" element={<ChatPage />} />
             </Route>
 
@@ -76,7 +76,7 @@ const AppLayout: React.FC = () => {
                 <Route path="appointment" element={<AppointmentPage />} />
             </Route>
             <Route element={<ProtectedRoute allowedRoles={['patient', 'nurse', 'doctor']} />}>
-              <Route path="patient/profile" element={<PatientProfilePage />} />
+              <Route path="profile" element={<PatientProfilePage />} />
             </Route>
 
             {/* Shared Routes */}

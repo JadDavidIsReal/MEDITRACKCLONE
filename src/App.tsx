@@ -8,8 +8,18 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/*" element={<AppLayout />} />
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/nurse/*" element={<AppLayout />} />
+        <Route path="/doctor/*" element={<AppLayout />} />
+        <Route path="/patient/*" element={<AppLayout />} />
+        <Route path="/search" element={<AppLayout />} />
+        <Route path="/stocks" element={<AppLayout />} />
+        <Route path="/history" element={<AppLayout />} />
+        <Route path="/reports" element={<AppLayout />} />
+        <Route path="/chat" element={<AppLayout />} />
+        <Route path="/appointment" element={<AppLayout />} />
+        <Route path="/about" element={<AppLayout />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
