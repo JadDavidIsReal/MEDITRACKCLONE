@@ -15,9 +15,9 @@ import DoctorDashboardPage from '../pages/doctor/DoctorDashboardPage';
 import ChatPage from '../pages/doctor/ChatPage';
 // Patient Pages
 import AppointmentPage from '../pages/patient/AppointmentPage';
+import PatientProfilePage from '../pages/shared/PatientProfilePage';
 // Shared Pages
 import AboutPage from '../pages/AboutPage';
-import PatientProfilePage from '../pages/shared/PatientProfilePage';
 
 const AppLayout: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1024);
@@ -46,7 +46,7 @@ const AppLayout: React.FC = () => {
   return (
     <div className="flex h-screen bg-gray-50">
       <div className={`fixed lg:static h-full z-20 bg-gray-800 text-white transition-all duration-300 ${isSidebarOpen ? 'w-64' : 'w-0'} lg:w-64`}>
-        <Sidebar role={userRole} />
+        {isSidebarOpen && <Sidebar role={userRole} />}
       </div>
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header toggleSidebar={toggleSidebar} />
