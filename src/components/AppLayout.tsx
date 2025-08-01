@@ -62,7 +62,7 @@ const AppLayout: React.FC = () => {
 
             {/* Search Route for Nurse and Doctor */}
             <Route element={<ProtectedRoute allowedRoles={['nurse', 'doctor']} />}>
-                <Route path="search" element={<SearchPage />} />
+                <Route path="/search" element={<SearchPage />} />
             </Route>
 
             {/* Doctor Routes */}
@@ -80,7 +80,7 @@ const AppLayout: React.FC = () => {
             </Route>
 
             {/* Shared Routes */}
-            <Route path="about" element={<AboutPage />} />
+            <Route path="/about" element={<AboutPage />} />
 
             {/* Redirect to role-specific dashboard */}
             <Route path="/" element={<RoleBasedRedirect />} />
